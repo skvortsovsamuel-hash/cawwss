@@ -1,0 +1,104 @@
+{
+  "theme_mode": "light",
+  "colors": {
+    "primary_navy": "#0B1D36",
+    "action_teal": "#008080",
+    "accent_gold": "#D4AF37",
+    "background_warm_gray": "#F5F5F0",
+    "foreground_dark": "#1A1A1A",
+    "surface_white": "#FFFFFF",
+    "muted_gray": "#E5E5E0"
+  },
+  "typography": {
+    "headings": {
+      "fontFamily": "Lora, serif",
+      "weights": ["400", "500", "600"],
+      "usage": "Main headings, section titles, large numbers in stat cards, crest logo text"
+    },
+    "body": {
+      "fontFamily": "Inter, sans-serif",
+      "weights": ["400", "500", "600"],
+      "usage": "Body text, UI elements, labels, buttons, inputs"
+    }
+  },
+  "visual_enhancers": {
+    "borders": "1px solid rgba(11, 29, 54, 0.1) for structural elements, enhancing the 'ledger' aesthetic.",
+    "shadows": "Minimal drop shadows (shadow-sm). Rely more on borders and background contrast.",
+    "borderRadius": "rounded-md (6px - 8px) for buttons and input fields.",
+    "textures": "Flat, clean backgrounds. The warm gray gives a subtle paper-like academic feel."
+  },
+  "components": {
+    "button": {
+      "style": "Solid Teal (#008080) background, white text, rounded-md. This must be the one standard style everywhere for primary actions.",
+      "hover": "Darken teal slightly on hover. No drastic scaling or translating.",
+      "variants": "Secondary buttons can be outlined navy or subtle warm gray backgrounds."
+    },
+    "stat_display": {
+      "style": "'Ledger' style cards: Warm gray or white backgrounds with subtle borders. Large serif numbers (Lora) placed over sans-serif (Inter) gray labels."
+    },
+    "logo": {
+      "style": "Circular crest matching ideology of unity + community action."
+    },
+    "loading_state": {
+      "style": "Skeleton loaders or subtle spinners MUST be used everywhere data fetches occur."
+    }
+  },
+  "grids_and_layouts": {
+    "spacing": "Use generous spacing: 24-32px (p-6 to p-8) breathing room around headers and main sections.",
+    "container": "Max-width containers (max-w-6xl) to ensure readability of feeds and forms.",
+    "alignment": "Left-aligned for textual feeds and forms. Center-aligned acceptable for hero banners and stat grids."
+  },
+  "motion": {
+    "transitions": "Subtle opacity and color transitions (200ms ease). Avoid bouncy or exaggerated motion to maintain a professional, academic tone.",
+    "loading": "Skeleton loading everywhere data fetches."
+  },
+  "accessibility": {
+    "contrast": "Ensure Teal text on white backgrounds and white text on Teal backgrounds meets WCAG AA standards (4.5:1).",
+    "test_ids": "All interactive and key informational elements MUST include a data-testid attribute.",
+    "focus": "Clear focus rings (ring-2 ring-primary_navy/50) on all inputs and buttons."
+  },
+  "images": [
+    {
+      "url": "https://images.unsplash.com/photo-1758599668299-beebedfabf7b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHZvbHVudGVlcmluZyUyMGNvbW11bml0eSUyMGFjdGlvbnxlbnwwfHx8fDE3ODQ1ODUzMTF8MA&ixlib=rb-4.1.0&q=85",
+      "category": "hero",
+      "description": "Volunteers cleaning up a forest - Good for landing page hero or 'How it works' section."
+    },
+    {
+      "url": "https://images.pexels.com/photos/7156162/pexels-photo-7156162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "category": "community",
+      "description": "Diverse young volunteers organizing donations - Ideal for NGO Dashboard empty states or community spotlight."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwxfHxub24tcHJvZml0JTIwb3JnYW5pemF0aW9uJTIwbWVldGluZyUyMGNvbGxhYm9yYXRpb258ZW58MHx8fHwxNzg0NTg1MzExfDA&ixlib=rb-4.1.0&q=85",
+      "category": "collaboration",
+      "description": "People sitting on chair in front of table holding pens - Great for Admin/NGO approval sections or 'trust' building."
+    },
+    {
+      "url": "https://images.pexels.com/photos/7654438/pexels-photo-7654438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "category": "ngo_meeting",
+      "description": "Colleagues working together - Use for NGO landing page or registration flow."
+    }
+  ],
+  "3d_libraries": {
+    "decision": "Avoid 3D libraries.",
+    "reason": "The academic and NGO context requires absolute clarity, accessibility, and straightforward information processing. A flat, ledger-style design is far more appropriate."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic outputs. Avoid this by strictly adhering to the typography and layout rules provided.",
+    "Do NOT use complete transparent background in header, overlays, any surface that has content under it.",
+    "All interactive and key informational elements MUST include a data-testid attribute to facilitate robust automated testing.",
+    "You have .js files not .tsx file, so write components and files in standard JavaScript + JSX, not TypeScript.",
+    "Use 'sonner' for toasts. Remember to check if it's installed or use Shadcn's version.",
+    "Use Lora (serif) for headings and Inter (sans-serif) for body text.",
+    "Buttons must be solid Teal, white text, and rounded. No exception.",
+    "Stats must use the 'Ledger' style: large Lora numbers over Inter gray labels.",
+    "Ensure '24-32px' breathing room around headers/sections.",
+    "Never use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons."
+  ],
+  "GENERAL_UI_UX_DESIGN_GUIDELINES": [
+    "Always start from mobile-first approach, using fluid typographies.",
+    "Ensure high contrast on active/hover states.",
+    "Use loading states (skeletons, spinners) actively everywhere data fetches.",
+    "Implement clear state indicators (empty states, success states, error states) without relying on cryptic error codes."
+  ]
+}

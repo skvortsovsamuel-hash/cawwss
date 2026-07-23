@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --caws-navy: #0e3217;         /* deep forest */
+  --caws-teal: #407d4e;         /* mid green (primary accent) */
+  --caws-teal-hover: #33683f;   /* mid green hover */
+  --caws-gold: #78af84;         /* light green (soft accent) */
+  --caws-gold-soft: #5f9a6d;    /* light green hover */
+  --caws-warm-gray: #fbf6f1;    /* warm cream */
+  --caws-muted: #efe8de;        /* muted cream */
+  --caws-border: rgba(14, 50, 23, 0.14);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--caws-warm-gray);
+  color: #1A1A1A;
+}
+
+.font-serif { font-family: 'Syne', 'Inter', sans-serif; letter-spacing: -0.01em; }
+.font-sans { font-family: 'Inter', sans-serif; }
+
+@layer base {
+  :root {
+    --background: 30 50% 96%;         /* #fbf6f1 */
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 133 56% 13%;           /* #0e3217 deep forest */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 40% 92%;
+    --secondary-foreground: 133 56% 13%;
+    --muted: 30 40% 92%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 134 32% 37%;            /* #407d4e mid green */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 133 20% 85%;
+    --input: 133 20% 85%;
+    --ring: 134 32% 37%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+  h1, h2, h3, h4 { font-family: 'Syne', 'Inter', sans-serif; letter-spacing: -0.02em; font-weight: 700; }
+}
+
+/* Ledger stat card */
+.ledger-card {
+  background: #fff;
+  border: 1px solid var(--caws-border);
+  border-radius: 8px;
+  padding: 32px 28px;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.ledger-card:hover { border-color: rgba(14, 50, 23, 0.32); }
+
+.ledger-number {
+  font-family: 'Syne', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 3.25rem;
+  color: var(--caws-navy);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.ledger-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6B7280;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+.gold-italic {
+  font-family: 'Syne', 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--caws-gold);
+  letter-spacing: -0.01em;
+}
+
+/* Custom scroll */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--caws-warm-gray); }
+::-webkit-scrollbar-thumb { background: rgba(14,50,23,0.22); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(14,50,23,0.42); }
+
+/* Subtle grain */
+.crest-container {
+  background: radial-gradient(circle at center, #ffffff 0%, var(--caws-warm-gray) 70%);
+}
