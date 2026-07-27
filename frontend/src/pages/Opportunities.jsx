@@ -65,7 +65,8 @@ export default function Opportunities() {
     try { const r = await api.get("/opportunities", { params }); setItems(r.data); }
     finally { setLoading(false); }
   };
-  useEffect(() => { load(); /* eslint-disable-next-line */ }, [f, coords, nearbyOnly]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { load(); }, [f, coords, nearbyOnly]);
 
   const filteredItems = useMemo(() => {
     const q = (textQuery || "").trim().toLowerCase();

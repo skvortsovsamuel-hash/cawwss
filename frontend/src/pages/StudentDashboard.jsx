@@ -242,7 +242,7 @@ function CertsList({ certs = [] }) {
           <div className="text-xs tracking-widest text-gold uppercase mb-2">Certificate of Service</div>
           <div className="font-serif text-lg text-navy mb-1">{c.opportunity_title}</div>
           <div className="text-sm text-gray-500 mb-4">{c.ngo_name} · {c.hours}h · {c.date}</div>
-          <a href={`${process.env.REACT_APP_BACKEND_URL}/api/certificates/${c.id}/download?auth=${token}`} target="_blank" rel="noopener noreferrer">
+          <a href={`/api/certificates/${c.id}/download?auth=${token}`} target="_blank" rel="noopener noreferrer">
             <Button className="bg-teal hover:bg-teal-hover text-white rounded-md" data-testid={`cert-download-${c.id}`}>Download PDF</Button>
           </a>
         </div>

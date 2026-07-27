@@ -60,6 +60,7 @@ function AlertsButton() {
     const onFocus = () => load();
     window.addEventListener("focus", onFocus);
     return () => { cancelled = true; clearInterval(id); window.removeEventListener("focus", onFocus); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id]);
 
   if (!user) return null;

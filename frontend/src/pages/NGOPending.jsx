@@ -35,6 +35,7 @@ export default function NGOPending() {
     // Poll status every 15s in case admin approves
     const id = setInterval(() => { load(); refresh(); }, 15000);
     return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
