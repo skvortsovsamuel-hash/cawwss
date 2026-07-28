@@ -62,7 +62,15 @@ export default function Opportunities() {
     if (f.max_hours) params.max_hours = f.max_hours;
     if (coords) { params.near_lat = coords.lat; params.near_lng = coords.lng; }
     if (coords && nearbyOnly) params.nearby_only = true;
-    try { const r = await api.get("/opportunities", { params }); setItems(r.data); }
+    try {
+      const r = await api.get("/opportunities", { params });
+
+      const data = Array.isArray(r.data)
+        ? r.data
+        : r.data?.opportunities || [];
+
+      setItems(data);
+    }
     finally { setLoading(false); }
   };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -70,8 +78,8 @@ export default function Opportunities() {
 
   const filteredItems = useMemo(() => {
     const q = (textQuery || "").trim().toLowerCase();
-    if (!q) return items;
-    return items.filter(o =>
+    if (!q) return Array.isArray(items) ? items : [];
+    return (Array.isArray(items) ? items : []).filter(o =>
       (o.title || "").toLowerCase().includes(q) ||
       (o.description || "").toLowerCase().includes(q) ||
       (o.ngo_name || "").toLowerCase().includes(q) ||
@@ -174,7 +182,8 @@ export default function Opportunities() {
           <div className="text-center py-16 text-gray-500" data-testid="opp-empty">No opportunities match your filters yet.</div>
         ) : (
           <div className="grid md:grid-cols-2 gap-6">
-            {filteredItems.map(o => (
+            {Array.isArray(filteredItems) &&
+              filteredItems.map((o) => (
               <Link key={o.id} to={`/opportunities/${o.id}`} data-testid={`opp-card-${o.id}`}
                     className="block bg-white border border-[color:var(--caws-border)] rounded-md p-6 hover:border-teal transition-colors">
                 <div className="flex justify-between items-start mb-2 gap-3">
