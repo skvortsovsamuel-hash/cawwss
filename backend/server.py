@@ -28,16 +28,26 @@ load_dotenv(ROOT_DIR / '.env')
 
 import email_service  # imported after load_dotenv so env vars are set
 
-MONGO_URL = os.environ['MONGO_URL']
-DB_NAME = os.environ['DB_NAME']
-JWT_SECRET = os.environ['JWT_SECRET']
+MONGO_URL = os.getenv('MONGO_URL', '')
+DB_NAME = os.getenv('DB_NAME', 'caws')
+JWT_SECRET = os.getenv('JWT_SECRET', 'development-secret')
 EMERGENT_KEY = os.environ.get('EMERGENT_LLM_KEY', '')
 APP_NAME = os.environ.get('APP_NAME', 'caws')
 
 STORAGE_URL = "https://integrations.emergentagent.com/objstore/api/v1/storage"
 
-client = AsyncIOMotorClient(MONGO_URL)
-db = client[DB_NAME]
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+client = None
+db = None
+
+if MONGO_URL:
+    try:
+        client = AsyncIOMotorClient(MONGO_URL)
+        db = client[DB_NAME]
+    except Exception as exc:
+        logger.warning(f"MongoDB client initialization failed: {exc}")
 
 app = FastAPI(title="CAWS API")
 
@@ -54,9 +64,6 @@ app.add_middleware(
 
 api_router = APIRouter(prefix="/api")
 security = HTTPBearer(auto_error=False)
-
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 # ============ Object Storage ============
 _storage_key = None
