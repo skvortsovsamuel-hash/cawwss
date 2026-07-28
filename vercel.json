@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "cd frontend && npm ci",
+  "framework": "create-react-app",
+  "installCommand": "cd frontend && npm install --legacy-peer-deps --include=dev",
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/build",
   "rewrites": [
