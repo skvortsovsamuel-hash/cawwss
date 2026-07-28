@@ -26,7 +26,10 @@ from reportlab.lib.units import inch
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-import email_service  # imported after load_dotenv so env vars are set
+try:
+    from . import email_service
+except ImportError:
+    import email_service
 
 MONGO_URL = os.getenv('MONGO_URL', '')
 DB_NAME = os.getenv('DB_NAME', 'caws')
